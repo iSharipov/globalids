@@ -31,7 +31,12 @@ public class SsnIdentifierTest {
         employee.setSsn(new Ssn("856-45-6789"));
         Employee persistedEmployee = employeeRepository.save(employee);
         Assert.assertEquals(1, employeeRepository.findAll().size());
-        Assert.assertEquals("856-45-6789", persistedEmployee.getSsn().formattedValue());
+        Ssn ssn = persistedEmployee.getSsn();
+        Assert.assertEquals("856-45-6789", ssn.formattedValue());
+        Assert.assertEquals("856456789", ssn.value());
+        Assert.assertEquals("856", ssn.getArea());
+        Assert.assertEquals("45", ssn.getGroup());
+        Assert.assertEquals("6789", ssn.getSerial());
     }
 
     @Test
