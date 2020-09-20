@@ -29,6 +29,7 @@ public class Ssn implements Identifier {
      * Returns the Ssn representation of the {@code value} argument.
      *
      * @param value an {@code String}.
+     * @return Ssn
      */
     @JsonCreator
     public static Ssn valueOf(final String value) {
