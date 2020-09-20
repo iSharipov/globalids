@@ -21,6 +21,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
  * Social Security number - https://en.wikipedia.org/wiki/Social_Security_number
+ * Regular expression - https://www.geeksforgeeks.org/how-to-validate-ssn-social-security-number-using-regular-expression/
  */
 public class Ssn implements Identifier {
 
