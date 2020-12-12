@@ -1,6 +1,7 @@
-package io.github.isharipov.globalids.us.ssn;
+package io.github.isharipov.globalids.us;
 
 import io.github.isharipov.globalids.us.ssn.Ssn;
+import io.github.isharipov.globalids.us.zipcode.ZipCode;
 
 import javax.persistence.Column;
 import javax.persistence.Convert;
@@ -19,6 +20,9 @@ public class Employee {
     @Column
     @Convert(converter = Ssn.SsnAttributeConverter.class)
     private Ssn ssn;
+    @Column(name = "zip_code")
+    @Convert(converter = ZipCode.ZipCodeAttributeConverter.class)
+    private ZipCode zipCode;
 
     public long getId() {
         return id;
@@ -34,5 +38,13 @@ public class Employee {
 
     public void setSsn(Ssn ssn) {
         this.ssn = ssn;
+    }
+
+    public ZipCode getZipCode() {
+        return zipCode;
+    }
+
+    public void setZipCode(ZipCode zipCode) {
+        this.zipCode = zipCode;
     }
 }

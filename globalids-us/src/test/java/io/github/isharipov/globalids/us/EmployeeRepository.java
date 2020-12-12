@@ -1,4 +1,4 @@
-package io.github.isharipov.globalids.us.ssn;
+package io.github.isharipov.globalids.us;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

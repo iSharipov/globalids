@@ -252,7 +252,7 @@
     </build>
 
     <properties>
-        <modelframework.version>0.0.1</modelframework.version>
+        <modelframework.version>0.0.2</modelframework.version>
         <jackson-annotations.version>2.11.2</jackson-annotations.version>
         <spring-test.version>5.2.8.RELEASE</spring-test.version>
         <spring-data-jpa.version>2.3.3.RELEASE</spring-data-jpa.version>
