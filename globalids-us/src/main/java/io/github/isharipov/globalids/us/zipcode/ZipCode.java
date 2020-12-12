@@ -27,7 +27,7 @@ public class ZipCode implements Model {
     public static final String REGEX = "^\\d{5}(?:[-\\s]\\d{4})?$";
 
     /**
-     * Returns the Ssn representation of the {@code value} argument.
+     * Returns the ZipCode representation of the {@code value} argument.
      *
      * @param value an {@code String}.
      * @return ZIP Code
