@@ -1,11 +1,11 @@
-package com.isharipov.globalids.us;
+package io.github.isharipov.globalids.us;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.isharipov.globalids.Identifier;
-import com.isharipov.globalids.IdentifierAttributeConverter;
-import com.isharipov.globalids.IdentifierConstraintValidator;
-import com.isharipov.globalids.ValidationException;
+import io.github.isharipov.modelframework.Model;
+import io.github.isharipov.modelframework.ModelAttributeConverter;
+import io.github.isharipov.modelframework.ModelConstraintValidator;
+import io.github.isharipov.modelframework.ValidationException;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -23,7 +23,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  * Social Security number - https://en.wikipedia.org/wiki/Social_Security_number
  * Regular expression - https://www.geeksforgeeks.org/how-to-validate-ssn-social-security-number-using-regular-expression/
  */
-public class Ssn implements Identifier {
+public class Ssn implements Model {
 
     /**
      * Returns the Ssn representation of the {@code value} argument.
@@ -80,7 +80,7 @@ public class Ssn implements Identifier {
      * entity attribute state into database column representation
      * and back again.
      */
-    public static class SsnAttributeConverter extends IdentifierAttributeConverter<Ssn> {
+    public static class SsnAttributeConverter extends ModelAttributeConverter<Ssn> {
         protected Ssn instance(String value) {
             return valueOf(value);
         }
@@ -90,7 +90,7 @@ public class Ssn implements Identifier {
     @Retention(RUNTIME)
     @Constraint(validatedBy = SsnConstraintValidator.class)
     public @interface SsnValidator {
-        String message() default "{com.isharipov.globalids.us.SsnValidator.message}";
+        String message() default "{io.github.isharipov.globalids.us.SsnValidator.message}";
 
         Class<?>[] groups() default {};
 
@@ -101,7 +101,7 @@ public class Ssn implements Identifier {
     /**
      * Defines the logic to validate a given constraint for a given object type
      */
-    public static class SsnConstraintValidator extends IdentifierConstraintValidator<SsnValidator, Ssn> {
+    public static class SsnConstraintValidator extends ModelConstraintValidator<SsnValidator, Ssn> {
         protected void instance(String value) {
             valueOf(value);
         }

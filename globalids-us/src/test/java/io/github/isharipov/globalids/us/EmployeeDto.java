@@ -1,6 +1,4 @@
-package com.isharipov.globalids.us;
-
-import javax.validation.Valid;
+package io.github.isharipov.globalids.us;
 
 public class EmployeeDto {
     @Ssn.SsnValidator

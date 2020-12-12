@@ -1,4 +1,4 @@
-package com.isharipov.globalids.us;
+package io.github.isharipov.globalids.us;
 
 import javax.persistence.Column;
 import javax.persistence.Convert;

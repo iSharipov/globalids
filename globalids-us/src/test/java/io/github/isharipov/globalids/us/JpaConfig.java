@@ -1,4 +1,4 @@
-package com.isharipov.globalids.us;
+package io.github.isharipov.globalids.us;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,8 +16,8 @@ import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
 @Configuration
-@EnableJpaRepositories(basePackages = "com.isharipov.globalids")
-@PropertySource("us/application.properties")
+@EnableJpaRepositories(basePackages = "io.github.isharipov.globalids")
+@PropertySource("application.properties")
 public class JpaConfig {
 
     @Bean
@@ -27,7 +27,7 @@ public class JpaConfig {
 
         LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
         factory.setJpaVendorAdapter(vendorAdapter);
-        factory.setPackagesToScan("com.isharipov.globalids");
+        factory.setPackagesToScan("io.github.isharipov.globalids");
         factory.setDataSource(dataSource());
         return factory;
     }
@@ -36,7 +36,7 @@ public class JpaConfig {
     public EmbeddedDatabase dataSource() {
         return new EmbeddedDatabaseBuilder().
                 setType(EmbeddedDatabaseType.H2).
-                addScript("us/schema-h2.sql").
+                addScript("schema-h2.sql").
                 build();
     }
 

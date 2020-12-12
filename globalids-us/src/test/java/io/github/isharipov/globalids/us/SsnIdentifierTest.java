@@ -1,4 +1,4 @@
-package com.isharipov.globalids.us;
+package io.github.isharipov.globalids.us;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Assert;
@@ -41,14 +41,14 @@ public class SsnIdentifierTest {
 
     @Test
     public void givenEmployee_whenValidate_thenGetOk() throws IOException {
-        EmployeeDto employee = new ObjectMapper().readValue(getClass().getClassLoader().getResourceAsStream("us/employee.json"), EmployeeDto.class);
+        EmployeeDto employee = new ObjectMapper().readValue(getClass().getClassLoader().getResourceAsStream("employee.json"), EmployeeDto.class);
         Set<ConstraintViolation<EmployeeDto>> constraintViolations = Validation.buildDefaultValidatorFactory().getValidator().validate(employee);
         Assert.assertEquals(0, constraintViolations.size());
     }
 
     @Test
     public void givenEmployee_whenValidate_thenGetNotOk() throws IOException {
-        EmployeeDto employee = new ObjectMapper().readValue(getClass().getClassLoader().getResourceAsStream("us/employee-error.json"), EmployeeDto.class);
+        EmployeeDto employee = new ObjectMapper().readValue(getClass().getClassLoader().getResourceAsStream("employee-error.json"), EmployeeDto.class);
         Set<ConstraintViolation<EmployeeDto>> constraintViolations = Validation.buildDefaultValidatorFactory().getValidator().validate(employee);
         Assert.assertEquals(1, constraintViolations.size());
     }

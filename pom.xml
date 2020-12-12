@@ -4,7 +4,11 @@
 
     <groupId>io.github.isharipov</groupId>
     <artifactId>globalids</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <version>0.0.1-SNAPSHOT</version>
+    <modules>
+        <module>globalids-us</module>
+    </modules>
 
     <parent>
         <groupId>org.sonatype.oss</groupId>
@@ -41,14 +45,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>javax.persistence</groupId>
-            <artifactId>javax.persistence-api</artifactId>
-            <version>${javax.persistence-api.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-            <version>${validation-api.version}</version>
+            <groupId>io.github.isharipov</groupId>
+            <artifactId>modelframework</artifactId>
+            <version>${modelframework.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -253,8 +252,7 @@
     </build>
 
     <properties>
-        <javax.persistence-api.version>2.2</javax.persistence-api.version>
-        <validation-api.version>2.0.1.Final</validation-api.version>
+        <modelframework.version>0.0.1</modelframework.version>
         <jackson-annotations.version>2.11.2</jackson-annotations.version>
         <spring-test.version>5.2.8.RELEASE</spring-test.version>
         <spring-data-jpa.version>2.3.3.RELEASE</spring-data-jpa.version>
