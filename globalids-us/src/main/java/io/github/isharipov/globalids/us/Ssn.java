@@ -25,6 +25,8 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  */
 public class Ssn implements Model {
 
+    public static final String REGEX = "^(?!666|000|9\\d{2})\\d{3}-(?!00)\\d{2}-(?!0{4})\\d{4}$";
+
     /**
      * Returns the Ssn representation of the {@code value} argument.
      *
@@ -50,7 +52,7 @@ public class Ssn implements Model {
     private final String serial;
 
     public Ssn(final String ssn) {
-        Pattern pattern = Pattern.compile("^(?!666|000|9\\d{2})\\d{3}-(?!00)\\d{2}-(?!0{4})\\d{4}$");
+        Pattern pattern = Pattern.compile(REGEX);
         if (!pattern.matcher(ssn).matches()) {
             throw new SsnValidationException(String.format("%s has invalid format", ssn));
         }
