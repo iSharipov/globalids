@@ -3,7 +3,7 @@ package io.github.isharipov.globalids.us;
 import io.github.isharipov.globalids.us.ssn.Ssn;
 import io.github.isharipov.globalids.us.zipcode.ZipCode;
 
-public class EmployeeDto {
+public class EmployeeUsDto {
     @Ssn.SsnValidator
     private String ssn;
     @ZipCode.ZipCodeValidator

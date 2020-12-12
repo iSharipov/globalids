@@ -1,6 +1,7 @@
 package io.github.isharipov.globalids.us;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.github.isharipov.globalids.JpaConfig;
 import io.github.isharipov.globalids.us.ssn.Ssn;
 import io.github.isharipov.globalids.us.zipcode.ZipCode;
 import org.junit.Assert;
@@ -22,18 +23,18 @@ import java.util.Set;
         classes = {JpaConfig.class},
         loader = AnnotationConfigContextLoader.class)
 @Transactional
-public class EmployeeTest {
+public class EmployeeUSTest {
 
     @Autowired
-    private EmployeeRepository employeeRepository;
+    private EmployeeUSRepository employeeUSRepository;
 
     @Test
     public void givenEmployee_whenSaveSsn_thenGetOk() {
-        Employee employee = new Employee();
-        employee.setSsn(new Ssn("856-45-6789"));
-        Employee persistedEmployee = employeeRepository.save(employee);
-        Assert.assertEquals(1, employeeRepository.findAll().size());
-        Ssn ssn = persistedEmployee.getSsn();
+        EmployeeUS employeeUs = new EmployeeUS();
+        employeeUs.setSsn(new Ssn("856-45-6789"));
+        EmployeeUS persistedEmployeeUS = employeeUSRepository.save(employeeUs);
+        Assert.assertEquals(1, employeeUSRepository.findAll().size());
+        Ssn ssn = persistedEmployeeUS.getSsn();
         Assert.assertEquals("856-45-6789", ssn.formattedValue());
         Assert.assertEquals("856456789", ssn.value());
         Assert.assertEquals("856", ssn.getArea());
@@ -43,25 +44,25 @@ public class EmployeeTest {
 
     @Test
     public void givenEmployee_whenValidateSsn_thenGetOk() throws IOException {
-        EmployeeDto employee = new ObjectMapper().readValue(getClass().getClassLoader().getResourceAsStream("ssn/ssn.json"), EmployeeDto.class);
-        Set<ConstraintViolation<EmployeeDto>> constraintViolations = Validation.buildDefaultValidatorFactory().getValidator().validate(employee);
+        EmployeeUsDto employee = new ObjectMapper().readValue(getClass().getClassLoader().getResourceAsStream("ssn/ssn.json"), EmployeeUsDto.class);
+        Set<ConstraintViolation<EmployeeUsDto>> constraintViolations = Validation.buildDefaultValidatorFactory().getValidator().validate(employee);
         Assert.assertEquals(0, constraintViolations.size());
     }
 
     @Test
     public void givenEmployee_whenValidateSsn_thenGetNotOk() throws IOException {
-        EmployeeDto employee = new ObjectMapper().readValue(getClass().getClassLoader().getResourceAsStream("ssn/ssn-error.json"), EmployeeDto.class);
-        Set<ConstraintViolation<EmployeeDto>> constraintViolations = Validation.buildDefaultValidatorFactory().getValidator().validate(employee);
+        EmployeeUsDto employee = new ObjectMapper().readValue(getClass().getClassLoader().getResourceAsStream("ssn/ssn-error.json"), EmployeeUsDto.class);
+        Set<ConstraintViolation<EmployeeUsDto>> constraintViolations = Validation.buildDefaultValidatorFactory().getValidator().validate(employee);
         Assert.assertEquals(1, constraintViolations.size());
     }
 
     @Test
     public void givenEmployee_whenSaveZipCode_thenGetOk() {
-        Employee employee = new Employee();
-        employee.setZipCode(new ZipCode("99750-0077"));
-        Employee persistedEmployee = employeeRepository.save(employee);
-        Assert.assertEquals(1, employeeRepository.findAll().size());
-        ZipCode zipCode = persistedEmployee.getZipCode();
+        EmployeeUS employeeUs = new EmployeeUS();
+        employeeUs.setZipCode(new ZipCode("99750-0077"));
+        EmployeeUS persistedEmployeeUS = employeeUSRepository.save(employeeUs);
+        Assert.assertEquals(1, employeeUSRepository.findAll().size());
+        ZipCode zipCode = persistedEmployeeUS.getZipCode();
         Assert.assertEquals("99750-0077", zipCode.formattedValue());
         Assert.assertEquals("99750 0077", zipCode.value());
         Assert.assertEquals("9", zipCode.getGroupOfStates());
@@ -72,11 +73,11 @@ public class EmployeeTest {
 
     @Test
     public void givenEmployee_whenSaveZipCodeWithoutGeographicSegment_thenGetOk() {
-        Employee employee = new Employee();
-        employee.setZipCode(new ZipCode("99750"));
-        Employee persistedEmployee = employeeRepository.save(employee);
-        Assert.assertEquals(1, employeeRepository.findAll().size());
-        ZipCode zipCode = persistedEmployee.getZipCode();
+        EmployeeUS employeeUs = new EmployeeUS();
+        employeeUs.setZipCode(new ZipCode("99750"));
+        EmployeeUS persistedEmployeeUS = employeeUSRepository.save(employeeUs);
+        Assert.assertEquals(1, employeeUSRepository.findAll().size());
+        ZipCode zipCode = persistedEmployeeUS.getZipCode();
         Assert.assertEquals("99750", zipCode.formattedValue());
         Assert.assertEquals("99750", zipCode.value());
         Assert.assertEquals("9", zipCode.getGroupOfStates());
@@ -86,11 +87,11 @@ public class EmployeeTest {
 
     @Test
     public void givenEmployee_whenSaveZipCodeSpaceInsteadOfHyphen_thenGetOk() {
-        Employee employee = new Employee();
-        employee.setZipCode(new ZipCode("99750 0077"));
-        Employee persistedEmployee = employeeRepository.save(employee);
-        Assert.assertEquals(1, employeeRepository.findAll().size());
-        ZipCode zipCode = persistedEmployee.getZipCode();
+        EmployeeUS employeeUs = new EmployeeUS();
+        employeeUs.setZipCode(new ZipCode("99750 0077"));
+        EmployeeUS persistedEmployeeUS = employeeUSRepository.save(employeeUs);
+        Assert.assertEquals(1, employeeUSRepository.findAll().size());
+        ZipCode zipCode = persistedEmployeeUS.getZipCode();
         Assert.assertEquals("99750-0077", zipCode.formattedValue());
         Assert.assertEquals("99750 0077", zipCode.value());
         Assert.assertEquals("9", zipCode.getGroupOfStates());
@@ -101,15 +102,15 @@ public class EmployeeTest {
 
     @Test
     public void givenEmployee_whenValidateZipCode_thenGetOk() throws IOException {
-        EmployeeDto employee = new ObjectMapper().readValue(getClass().getClassLoader().getResourceAsStream("zipcode/zipcode.json"), EmployeeDto.class);
-        Set<ConstraintViolation<EmployeeDto>> constraintViolations = Validation.buildDefaultValidatorFactory().getValidator().validate(employee);
+        EmployeeUsDto employee = new ObjectMapper().readValue(getClass().getClassLoader().getResourceAsStream("zipcode/zipcode.json"), EmployeeUsDto.class);
+        Set<ConstraintViolation<EmployeeUsDto>> constraintViolations = Validation.buildDefaultValidatorFactory().getValidator().validate(employee);
         Assert.assertEquals(0, constraintViolations.size());
     }
 
     @Test
     public void givenEmployee_whenValidateZipCode_thenGetNotOk() throws IOException {
-        EmployeeDto employee = new ObjectMapper().readValue(getClass().getClassLoader().getResourceAsStream("zipcode/zipcode-error.json"), EmployeeDto.class);
-        Set<ConstraintViolation<EmployeeDto>> constraintViolations = Validation.buildDefaultValidatorFactory().getValidator().validate(employee);
+        EmployeeUsDto employee = new ObjectMapper().readValue(getClass().getClassLoader().getResourceAsStream("zipcode/zipcode-error.json"), EmployeeUsDto.class);
+        Set<ConstraintViolation<EmployeeUsDto>> constraintViolations = Validation.buildDefaultValidatorFactory().getValidator().validate(employee);
         Assert.assertEquals(1, constraintViolations.size());
     }
 }

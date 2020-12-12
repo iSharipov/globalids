@@ -92,13 +92,12 @@ public class Ssn implements Model {
     @Retention(RUNTIME)
     @Constraint(validatedBy = SsnConstraintValidator.class)
     public @interface SsnValidator {
-        String message() default "{io.github.isharipov.globalids.us.SsnValidator.message}";
+        String message() default "{io.github.isharipov.globalids.us.nino.SsnValidator.message}";
 
         Class<?>[] groups() default {};
 
         Class<? extends Payload>[] payload() default {};
     }
-
 
     /**
      * Defines the logic to validate a given constraint for a given object type

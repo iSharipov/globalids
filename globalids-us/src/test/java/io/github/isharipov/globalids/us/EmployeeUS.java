@@ -12,8 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "employee")
-public class Employee {
+@Table(name = "employee_us")
+public class EmployeeUS {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
