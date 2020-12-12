@@ -1,4 +1,6 @@
-package io.github.isharipov.globalids.us;
+package io.github.isharipov.globalids.us.ssn;
+
+import io.github.isharipov.globalids.us.ssn.Ssn;
 
 public class EmployeeDto {
     @Ssn.SsnValidator

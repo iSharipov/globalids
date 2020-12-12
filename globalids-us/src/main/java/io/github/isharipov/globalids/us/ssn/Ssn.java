@@ -1,4 +1,4 @@
-package io.github.isharipov.globalids.us;
+package io.github.isharipov.globalids.us.ssn;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;

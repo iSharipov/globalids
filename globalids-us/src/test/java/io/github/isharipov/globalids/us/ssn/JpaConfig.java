@@ -1,4 +1,4 @@
-package io.github.isharipov.globalids.us;
+package io.github.isharipov.globalids.us.ssn;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
