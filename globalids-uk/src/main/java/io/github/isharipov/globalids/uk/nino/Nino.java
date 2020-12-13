@@ -56,8 +56,8 @@ public class Nino implements Model {
             throw new NinoValidationException(String.format("%s has invalid format", nino));
         }
         prefix = nino.substring(0, 2);
-        digits = nino.substring(2, 6);
-        suffix = nino.substring(6);
+        digits = nino.substring(2, 8);
+        suffix = nino.substring(8);
     }
 
     public static class NinoValidationException extends ValidationException {
@@ -102,4 +102,15 @@ public class Nino implements Model {
         }
     }
 
+    public String getPrefix() {
+        return prefix;
+    }
+
+    public String getDigits() {
+        return digits;
+    }
+
+    public String getSuffix() {
+        return suffix;
+    }
 }
