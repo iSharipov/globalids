@@ -27,8 +27,8 @@
     * ZIP Code - since 0.0.1
         * Regex - `^\d{5}(?:[-\s]\d{4})?$`
         * Example - `99750, 99750-0077, 99750 0077`
-* United Kingdom - since 0.0.1
-    * National Insurance number
+* United Kingdom
+    * National Insurance number - since 0.0.1
         * Regex - `^[A-CEGHJ-PR-TW-Z]{1}[A-CEGHJ-NPR-TW-Z]{1}[0-9]{6}[A-DFM]{0,1}$`
         * Example - `JG103759A, AP019283D, ZX047829C`
 
