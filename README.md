@@ -25,7 +25,11 @@
         * Example - `856-45-6789`
     * ZIP Code
         * Regex - `^\d{5}(?:[-\s]\d{4})?$`
-        * Example - `99750`, `99750-0077`, `99750 0077`
+        * Example - `99750, 99750-0077, 99750 0077`
+* United Kingdom
+    * National Insurance number
+        * Regex - `^[A-CEGHJ-PR-TW-Z]{1}[A-CEGHJ-NPR-TW-Z]{1}[0-9]{6}[A-DFM]{0,1}$`
+        * Example - `JG103759A, AP019283D, ZX047829C`
 
 ---
 
@@ -34,6 +38,7 @@
 ```groovy
 dependencies {
     implementation("io.github.isharipov:globalids-us:0.0.1")
+    implementation("io.github.isharipov:globalids-uk:0.0.1")
 }
 ```
 
@@ -47,6 +52,11 @@ dependencies {
         <artifactId>globalids-us</artifactId>
         <version>0.0.1</version>
     </dependency>
+    <dependency>
+        <groupId>io.github.isharipov</groupId>
+        <artifactId>globalids-uk</artifactId>
+        <version>0.0.1</version>
+    </dependency>
 </dependencies>
 ```
 
@@ -54,4 +64,4 @@ dependencies {
 
 ## Requirements
 
-EnumEnhancer requires Java 1.8 or later.
+Global Identifiers requires Java 1.8 or later.
